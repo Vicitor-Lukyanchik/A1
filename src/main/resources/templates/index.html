@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+
+<form th:action="@{/postings(startDate=${startDate}, endDate=${endDate}, isAuthorized=${isAuthorized})}">
+    <label for="startDate">Start Date(mm/dd/yyyy) :</label>
+    <input type="date" th:name="startDate" id="startDate" value="2018-01-01"/><br/>
+    <label for="endDate">End Date (mm/dd/yyyy) :</label>
+    <input type="date" th:name="endDate" id="endDate" value="2022-01-01"/><br/>
+    <label for="isAuthorized">Is authorized</label>
+    <input class="checkbox-wrapper" type="checkbox" name="isAuthorized" th:checked="${isAuthorized}"
+           id="isAuthorized"/><br/>
+    <br/>
+    <input class="form-submit-button" type="submit"/><br/><br/>
+    <br/>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th th:text="MatDoc"/>
+            <th th:text="Item"/>
+            <th th:text="DocDate"/>
+            <th th:text="PostingDate"/>
+            <th th:text="Material"/>
+            <th th:text="Quantity"/>
+            <th th:text="BUn"/>
+            <th th:text="Amount"/>
+            <th th:text="Curency"/>
+            <th th:text="Username"/>
+            <th th:text="Authorized"/>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="posting : ${postings}">
+            <td th:text="${posting.getMatDoc()}"/>
+            <td th:text="${posting.getItem()}"/>
+            <td th:text="${posting.getDocDate()}"/>
+            <td th:text="${posting.getPostingDate()}"/>
+            <td th:text="${posting.getMaterial()}"/>
+            <td th:text="${posting.getQuantity()}"/>
+            <td th:text="${posting.getBun()}"/>
+            <td th:text="${posting.getAmount()}"/>
+            <td th:text="${posting.getCurrency()}"/>
+            <td th:text="${posting.getUserName()}"/>
+            <td th:text="${posting.getIsAuthorized()}"/>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+</body>
+</html>

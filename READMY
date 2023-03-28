@@ -1,0 +1,7 @@
+TASK_3
+db-migrations
+1) create db(postings)
+2) create public schema(use sql file db-migrations/v-1.0/create_schema)
+3)open cmd
+4)cd path(where changelog file)
+5)liquibase --url=jdbc:postgresql://localhost:5432/postings --driver=org.postgresql.Driver --username=postgres --password=1234 --changeLogFile=changelog.xml update
